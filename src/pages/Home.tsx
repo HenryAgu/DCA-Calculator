@@ -1,5 +1,5 @@
 const Home = () => {
-  const transaction = [{ title: "transaction" }, { title: "transaction" }];
+  const transaction = [{ id: 1 }, { id: 2 }];
   return (
     <div className="w-11/12 lg:w-10/12 mx-auto my-5 lg:my-20">
       {/* Header */}
@@ -13,11 +13,11 @@ const Home = () => {
         <button className="bg-primary font-mullish py-3 px-4 rounded-lg text-white">
           Add Transaction
         </button>
-        {transaction.map((transaction, index) => (
+        {transaction.map((transaction) => (
           <div className="mt-10 flex flex-col lg:flex-row lg:items-end gap-x-8">
             <div className="flex items-center gap-x-2 font-redHatDisplay text-grey-100 font-semibold lg:text-2xl">
-              <p>{index + 1}.</p>
-              <p>{transaction.title} 0{index + 1}</p>
+              <p>{transaction.id}.</p>
+              <p>Transaction 0{transaction.id}</p>
             </div>
             <div className="flex flex-col lg:flex-row gap-y-5 items-center gap-x-8">
               <div className="flex flex-col gap-y-1">
