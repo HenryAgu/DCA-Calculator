@@ -1,9 +1,7 @@
 import Calculate from "./components/Calculate";
 import Transaction from "./components/Transaction";
-interface transaction {
-  id: number;
-}
-const Home: React.FC<transaction> = () => {
+
+const Home = () => {
   const transaction = [
     {
       id: 1,
