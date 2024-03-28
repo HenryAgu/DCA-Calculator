@@ -1,10 +1,22 @@
-interface TransactionProps{
+import { useState } from "react";
+
+interface TransactionProps {
   transaction: {
-    id: number,
-  }
+    id: number;
+  };
 }
 
-const Transaction: React.FC<TransactionProps> = ({transaction}) => {
+const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
+  const [totalTransaction, setTotalTransaction] = useState<string>("");
+  const [stock, setStock] = useState<string>("");
+  
+  const calculateUnitReceived = () =>{
+    const totalTransactionAsNumber = parseFloat(totalTransaction);
+    const stockAsNumber = parseFloat(stock);
+    const result = totalTransactionAsNumber / stockAsNumber;
+    return isNaN(result) ? 0: (result).toString();
+  }
+
   return (
     <>
       <div className="mt-10 flex flex-col lg:flex-row lg:items-end gap-x-8">
@@ -15,8 +27,10 @@ const Transaction: React.FC<TransactionProps> = ({transaction}) => {
         <div className="flex flex-col md:flex-row gap-y-5 items-center gap-x-8">
           <div className="flex flex-col gap-y-1">
             <input
-              type="text"
+              type="number"
               className="p-3 w-[90vw] md:w-[100%] lg:p-3 rounded-lg border border-purple-50"
+              value={totalTransaction}
+              onChange={(e) => setTotalTransaction(e.target.value)}
             />
             <span className="text-grey-100 text-sm font-bold">
               Total Spent on Transaction
@@ -24,8 +38,10 @@ const Transaction: React.FC<TransactionProps> = ({transaction}) => {
           </div>
           <div className="flex flex-col gap-y-1">
             <input
-              type="text"
+              type="number"
               className="p-3 w-[90vw] md:w-[100%] lg:p-3 rounded-lg border border-purple-50"
+              value={stock}
+              onChange={(e) => setStock(e.target.value)}
             />
             <span className="text-grey-100 text-sm font-bold">
               Cost of stock
@@ -34,7 +50,7 @@ const Transaction: React.FC<TransactionProps> = ({transaction}) => {
         </div>
         <div className="ml-22 mt-6">
           <p className="p-3 rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-fit lg:w-[100%]">
-            0
+            {calculateUnitReceived()}
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Units Recieved
