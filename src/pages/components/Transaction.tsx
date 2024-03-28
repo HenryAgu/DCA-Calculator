@@ -1,4 +1,10 @@
-const Transaction = ({transaction}) => {
+interface TransactionProps{
+  transaction: {
+    id: number,
+  }
+}
+
+const Transaction: React.FC<TransactionProps> = ({transaction}) => {
   return (
     <>
       <div className="mt-10 flex flex-col lg:flex-row lg:items-end gap-x-8">
