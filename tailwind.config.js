@@ -4,8 +4,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Red Hat Display", "sans-serif"],
+        redHatDisplay: ["Red Hat Display", "sans-serif"],
+        mullish: ["Mulish", "sans-serif"],
       },
+      colors:{
+        "primary": "#38036C",
+        grey:{
+          100: "#101828",
+        },
+        purple:{
+          50: "#38036C",
+        }
+      }
     },
   },
   plugins: [],
