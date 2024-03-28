@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Stock Purchase Calculator
+This is a simple web application that calculates the average cost per unit, total spent, and total stock units acquired for multiple stock purchases at varying prices.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+* Calculate Average Cost Per Unit: Input the quantity and price of each stock purchase to calculate the average cost per unit.
+* Total Spent: View the total amount spent on all stock purchases.
+* Total Stock Units Acquired: See the total number of stock units acquired through all purchases.
 
-Currently, two official plugins are available:
+## How to Use
+1. Enter the Total Spent on Transaction.
+2. Enter the Cost of stock.
+3. View the unit received.
+4. Click the "Calculate" button to view the results. The calculated average cost per unit, total spent, and total stock units acquired will be displayed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- ReactJs
+- TypeScript
+- TailwindCSS
 
-## Expanding the ESLint configuration
+## Demo
+You can try out a live demo of the application [here]("https://dca-calculator-mu.vercel.app/").
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
+To run this application locally, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+- Clone this repository to your local machine.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Screenshots
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contributors
+1. Henry Agu
