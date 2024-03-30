@@ -1,12 +1,20 @@
+import { useState } from "react";
 import Calculate from "./components/Calculate";
 import Transaction from "./components/Transaction";
 
 const Home = () => {
-  const transaction = [
+  const [transactions, setTransactions] = useState([
     {
       id: 1,
     },
-  ];
+  ]);
+
+  const handleAddTransaction = () => {
+    const newTransaction = {
+      id: transactions.length + 1,
+    };
+    setTransactions([...transactions, newTransaction])
+  };
   return (
     <div className="relative flex flex-col w-11/12 lg:w-10/12 mx-auto my-5 lg:my-20">
       {/* Header */}
@@ -17,10 +25,13 @@ const Home = () => {
       </div>
       {/* Transaction */}
       <div className="mt-6">
-        <button className="bg-primary font-mullish py-3 px-4 rounded-lg text-white">
+        <button
+          className="bg-primary font-mullish py-3 px-4 rounded-lg text-white"
+          onClick={handleAddTransaction}
+        >
           Add Transaction
         </button>
-        {transaction.map((transaction) => (
+        {transactions.map((transaction) => (
           <Transaction transaction={transaction} />
         ))}
       </div>

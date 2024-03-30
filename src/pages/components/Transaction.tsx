@@ -9,7 +9,7 @@ interface TransactionProps {
 const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
   const [totalTransaction, setTotalTransaction] = useState<string>("");
   const [stock, setStock] = useState<string>("");
-  
+
   const calculateUnitReceived = () =>{
     const totalTransactionAsNumber = parseFloat(totalTransaction);
     const stockAsNumber = parseFloat(stock);

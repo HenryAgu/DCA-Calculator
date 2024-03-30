@@ -1,6 +1,6 @@
 const Calculate = () => {
   return (
-    <div className="mt-20 md:fixed md:bottom-0 md:pb-24">
+    <div className="mt-20 md:pb-4">
       <button className="bg-primary font-mullish py-3 px-4 rounded-lg text-white">
         Calculate
       </button>
