@@ -1,21 +1,41 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { transactionType } from "../../types/transaction";
 
 interface TransactionProps {
-  transaction: {
-    id: number;
-  };
+  transaction: transactionType;
+  transactions: transactionType[];
+  setTransactions: React.Dispatch<React.SetStateAction<transactionType[]>>;
 }
 
-const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
-  const [totalTransaction, setTotalTransaction] = useState<string>("");
-  const [stock, setStock] = useState<string>("");
+const Transaction: React.FC<TransactionProps> = ({
+  transaction,
+  transactions,
+  setTransactions,
+}) => {
+  // const calculateUnitReceived = () => {
+  //   const totalTransactionAsNumber = parseFloat(totalTransaction);
+  //   const stockAsNumber = parseFloat(stock);
+  //   const result = totalTransactionAsNumber / stockAsNumber;
+  //   return isNaN(result) ? 0 : result.toString();
+  // };
 
-  const calculateUnitReceived = () =>{
-    const totalTransactionAsNumber = parseFloat(totalTransaction);
-    const stockAsNumber = parseFloat(stock);
-    const result = totalTransactionAsNumber / stockAsNumber;
-    return isNaN(result) ? 0: (result).toString();
-  }
+  const handleTotalSpentChange = (value: string) => {
+    const newArray: transactionType[] = [];
+
+    transactions.map((item) => {
+      if (item.id === transaction.id) {
+        const newTransaction = {
+          ...item,
+          totalSpent: +value,
+        };
+        newArray.push(newTransaction);
+      } else {
+        newArray.push(item);
+      }
+    });
+
+    setTransactions(newArray);
+  };
 
   return (
     <>
@@ -29,8 +49,8 @@ const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
             <input
               type="number"
               className="p-3 w-[90vw] md:w-[100%] lg:p-3 rounded-lg border border-purple-50"
-              value={totalTransaction}
-              onChange={(e) => setTotalTransaction(e.target.value)}
+              value={transaction.totalSpent ? transaction.totalSpent : 0}
+              onChange={(e) => handleTotalSpentChange(e.target.value)}
             />
             <span className="text-grey-100 text-sm font-bold">
               Total Spent on Transaction
@@ -40,8 +60,8 @@ const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
             <input
               type="number"
               className="p-3 w-[90vw] md:w-[100%] lg:p-3 rounded-lg border border-purple-50"
-              value={stock}
-              onChange={(e) => setStock(e.target.value)}
+              // value={stock}
+              // onChange={(e) => {}}
             />
             <span className="text-grey-100 text-sm font-bold">
               Cost of stock
@@ -49,8 +69,8 @@ const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
           </div>
         </div>
         <div className="ml-22 mt-6">
-          <p className="p-3 rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-fit lg:w-[100%]">
-            {calculateUnitReceived()}
+          <p className="p-3 rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] lg:w-[100%]">
+            xxx
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Units Recieved
