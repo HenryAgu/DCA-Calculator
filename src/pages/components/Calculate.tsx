@@ -1,7 +1,18 @@
+import { useState } from "react";
+import { transactionType } from "../../type/transactions";
+
+
 const Calculate = () => {
+  const [totalUnit, setTotalUnit] = useState<number | string>("XXXXX");
+  const handleCalculation = () => {
+    setTotalUnit("transaction.");
+  };
   return (
     <div className="mt-20 md:pb-4">
-      <button className="bg-primary font-mullish py-3 px-4 rounded-lg text-white">
+      <button
+        className="bg-primary font-mullish py-3 px-4 rounded-lg text-white"
+        onClick={handleCalculation}
+      >
         Calculate
       </button>
       <div className="flex flex-col md:flex-row md:items-center gap-x-8 font-redHatDisplay text-grey-100 font-semibold lg:text-2xl">
@@ -15,7 +26,7 @@ const Calculate = () => {
         </div>
         <div className="ml-22 mt-6">
           <p className="p-4 px-8 text-sm rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-full lg:w-[100%]">
-            XXXX
+            {totalUnit}
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Total Units Bought

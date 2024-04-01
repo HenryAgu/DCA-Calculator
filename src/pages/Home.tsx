@@ -1,22 +1,26 @@
 import { useState } from "react";
 import Calculate from "./components/Calculate";
 import Transaction from "./components/Transaction";
+import { transactionType } from "../type/transactions";
 
 const Home = () => {
-  const [transactions, setTransactions] = useState([
+  const [transactions, setTransactions] = useState<transactionType[]>([
     {
-      id: 1,
+      id: 0,
+      totalSpent: null,
+      costOfStock: null,
+      stocksReceived: null,
     },
   ]);
 
   const handleAddTransaction = () => {
     const newTransaction = {
-      id: transactions.length + 1,
+      id: transactions.length,
     };
     setTransactions([...transactions, newTransaction]);
   };
 
-  const handleDeleteTransaction = (id:number) => {
+  const handleDeleteTransaction = (id: number) => {
     const updatedTransaction = transactions.filter(
       (transaction) => transaction.id !== id
     );
@@ -39,8 +43,15 @@ const Home = () => {
           Add Transaction
         </button>
         {transactions.map((transaction) => (
-          <div className="flex flex-col md:flex-row md:items-center">
-            <Transaction transaction={transaction} />
+          <div
+            className="flex flex-col md:flex-row md:items-center"
+            key={transaction.id}
+          >
+            <Transaction
+              transaction={transaction}
+              transactions={transactions}
+              setTransactions={setTransactions}
+            />
             <button
               className="md:ml-2 mt-5 md:mt-10 bg-red-500 text-white px-3 py-1 rounded w-fit"
               onClick={() => handleDeleteTransaction(transaction.id)}
@@ -52,7 +63,8 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate />
+      <Calculate
+      />
     </div>
   );
 };
