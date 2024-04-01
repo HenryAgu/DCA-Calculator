@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { transactionType } from "../../type/transactions";
 
+interface TransactionProps {
+  transactions: transactionType[];
+}
 
-const Calculate = () => {
-  const [totalUnit, setTotalUnit] = useState<number | string>("XXXXX");
+const Calculate: React.FC<TransactionProps> = ({transactions}) => {
+  const [totalUnit, setTotalUnit] = useState("XXXXX");
   const handleCalculation = () => {
-    setTotalUnit("transaction.");
+    console.log(transactions)
   };
   return (
     <div className="mt-20 md:pb-4">

@@ -47,18 +47,22 @@ const Transaction: React.FC<TransactionProps> = ({
     setTransactions(newArray);
   };
 
-  const calculateUnitReceived = () =>{
+  const calculateUnitReceived = () => {
+    // @ts-ignore
     const totalTransactionAsNumber: number = parseFloat(transaction.totalSpent);
-    const stockAsNumber: number = parseFloat(transaction.costOfStock);    
+    // @ts-ignore
+    const stockAsNumber: number = parseFloat(transaction.costOfStock);
     const result = totalTransactionAsNumber / stockAsNumber;
-    return isNaN(result) ? 0: (result).toString();
-  }
+    return isNaN(result) ? "xxxx" : result.toString();
+  };
 
   return (
     <>
       <div className="mt-10 flex flex-col lg:flex-row lg:items-end gap-x-8">
         <div className="flex items-center gap-x-2 font-redHatDisplay text-grey-100 font-semibold lg:text-2xl">
+          {/* @ts-ignore */}
           <p>{transaction.id + 1}.</p>
+          {/* @ts-ignore */}
           <p>Transaction 0{transaction.id + 1}</p>
         </div>
         <div className="flex flex-col md:flex-row gap-y-5 items-center gap-x-8">

@@ -17,6 +17,7 @@ const Home = () => {
     const newTransaction = {
       id: transactions.length,
     };
+    // @ts-ignore
     setTransactions([...transactions, newTransaction]);
   };
 
@@ -54,6 +55,7 @@ const Home = () => {
             />
             <button
               className="md:ml-2 mt-5 md:mt-10 bg-red-500 text-white px-3 py-1 rounded w-fit"
+              // @ts-ignore
               onClick={() => handleDeleteTransaction(transaction.id)}
             >
               Delete
@@ -63,8 +65,7 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate
-      />
+      <Calculate transactions={transactions} />
     </div>
   );
 };
