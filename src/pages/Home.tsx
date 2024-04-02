@@ -27,6 +27,16 @@ const Home = () => {
     );
     setTransactions(updatedTransaction);
   };
+
+  const [totalUnit, setTotalUnit] = useState("XXXXX");
+
+  const calculateTotalSpent = () => {
+    const spentValues = transactions.map((spent)=>spent.totalSpent);
+    // @ts-ignore
+    const total = spentValues.reduce((acc: number, value: number) => acc + value, 0); // @ts-ignore
+    setTotalUnit(total);
+  }
+
   return (
     <div className="relative flex flex-col w-11/12 mx-auto my-5 lg:my-20">
       {/* Header */}
@@ -65,7 +75,7 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate transactions={transactions} />
+      <Calculate transactions={transactions} totalUnit={totalUnit} calculateTotalSpent={calculateTotalSpent}/>
     </div>
   );
 };
