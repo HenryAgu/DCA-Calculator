@@ -28,13 +28,22 @@ const Home = () => {
     setTransactions(updatedTransaction);
   };
 
+  const [totalSpent, setTotalSpent] = useState("XXXXX");
   const [totalUnit, setTotalUnit] = useState("XXXXX");
 
-  const calculateTotalSpent = () => {
+  const calculateTotal = () => {
     const spentValues = transactions.map((spent)=>spent.totalSpent);
     // @ts-ignore
-    const total = spentValues.reduce((acc: number, value: number) => acc + value, 0); // @ts-ignore
-    setTotalUnit(total);
+    const total = spentValues.reduce((acc: number, value: number) => acc + value, 0); 
+    // @ts-ignore
+    setTotalSpent(total);
+
+    // const unitValues = transactions.map((unit)=>unit.costOfStock);
+    // // @ts-ignore
+    // const totalUnit =  spentValues / unitValues;
+    // const totalUnitResult = totalUnit.reduce((acc: number, value: number) => acc + value, 0);
+    // setTotalUnit(totalUnitResult);
+    // console.log(totalUnitResult)
   }
 
   return (
@@ -75,7 +84,7 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate transactions={transactions} totalUnit={totalUnit} calculateTotalSpent={calculateTotalSpent}/>
+      <Calculate totalSpent={totalSpent} calculateTotal={calculateTotal} totalUnit={totalUnit}/>
     </div>
   );
 };

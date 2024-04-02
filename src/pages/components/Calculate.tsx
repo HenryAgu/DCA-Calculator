@@ -1,20 +1,19 @@
-import { useState } from "react";
-import { transactionType } from "../../type/transactions";
-
 interface TransactionProps {
-  transactions: transactionType[];
+  totalSpent: string;
   totalUnit: string;
-  calculateTotalSpent: ()=> void;
+  calculateTotal: () => void;
 }
 
-
-const Calculate: React.FC<TransactionProps> = ({transactions, totalUnit,calculateTotalSpent}) => {
-
+const Calculate: React.FC<TransactionProps> = ({
+  totalSpent,
+  totalUnit,
+  calculateTotal,
+}) => {
   return (
     <div className="mt-20 md:pb-4">
       <button
         className="bg-primary font-mullish py-3 px-4 rounded-lg text-white"
-        onClick={calculateTotalSpent}
+        onClick={calculateTotal}
       >
         Calculate
       </button>
@@ -29,7 +28,7 @@ const Calculate: React.FC<TransactionProps> = ({transactions, totalUnit,calculat
         </div>
         <div className="ml-22 mt-6">
           <p className="p-4 px-8 text-sm rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-full lg:w-[100%]">
-            XXXX
+            {totalUnit}
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Total Units Bought
@@ -37,7 +36,7 @@ const Calculate: React.FC<TransactionProps> = ({transactions, totalUnit,calculat
         </div>
         <div className="ml-22 mt-6">
           <p className="p-4 px-8 text-sm rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-full lg:w-[100%]">
-          {totalUnit}
+            {totalSpent}
           </p>
           <span className="text-grey-100 text-sm font-bold">Total Spent</span>
         </div>
