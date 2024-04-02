@@ -29,7 +29,7 @@ const Home = () => {
   };
 
   const [totalSpent, setTotalSpent] = useState("XXXXX");
-  const [totalUnit, setTotalUnit] = useState("XXXXX");
+  // const [totalUnit, setTotalUnit] = useState("XXXXX");
 
   const calculateTotal = () => {
     const spentValues = transactions.map((spent)=>spent.totalSpent);
@@ -84,7 +84,7 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate totalSpent={totalSpent} calculateTotal={calculateTotal} totalUnit={totalUnit}/>
+      <Calculate totalSpent={totalSpent} calculateTotal={calculateTotal}/>
     </div>
   );
 };
