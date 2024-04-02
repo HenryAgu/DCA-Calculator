@@ -29,22 +29,28 @@ const Home = () => {
   };
 
   const [totalSpent, setTotalSpent] = useState("XXXXX");
-  // const [totalUnit, setTotalUnit] = useState("XXXXX");
+  const [totalUnit, setTotalUnit] = useState("XXXXX");
 
   const calculateTotal = () => {
-    const spentValues = transactions.map((spent)=>spent.totalSpent);
+    const spentValues = transactions.map((spent) => spent.totalSpent || 0);
     // @ts-ignore
-    const total = spentValues.reduce((acc: number, value: number) => acc + value, 0); 
+    const total = spentValues.reduce(
+      (acc: number, value: number) => acc + value,
+      0
+    ).toLocaleString();
     // @ts-ignore
     setTotalSpent(total);
-
-    // const unitValues = transactions.map((unit)=>unit.costOfStock);
-    // // @ts-ignore
-    // const totalUnit =  spentValues / unitValues;
-    // const totalUnitResult = totalUnit.reduce((acc: number, value: number) => acc + value, 0);
-    // setTotalUnit(totalUnitResult);
-    // console.log(totalUnitResult)
-  }
+ 
+    // Calculate total unit
+    let totalUnit = 0;
+    transactions.forEach((transaction) => {
+      if (transaction.totalSpent !== null && transaction.costOfStock !== null) {
+        totalUnit += transaction.totalSpent / transaction.costOfStock;
+      }
+    });
+    // @ts-ignore
+    setTotalUnit(totalUnit);
+  };
 
   return (
     <div className="relative flex flex-col w-11/12 mx-auto my-5 lg:my-20">
@@ -84,7 +90,11 @@ const Home = () => {
       </div>
 
       {/* Calculate */}
-      <Calculate totalSpent={totalSpent} calculateTotal={calculateTotal}/>
+      <Calculate
+        totalSpent={totalSpent}
+        totalUnit={totalUnit}
+        calculateTotal={calculateTotal}
+      />
     </div>
   );
 };

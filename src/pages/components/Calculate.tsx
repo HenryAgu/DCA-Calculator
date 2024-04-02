@@ -1,10 +1,12 @@
 interface TransactionProps {
   totalSpent: string;
+  totalUnit: string;
   calculateTotal: () => void;
 }
 
 const Calculate: React.FC<TransactionProps> = ({
   totalSpent,
+  totalUnit,
   calculateTotal,
 }) => {
   return (
@@ -26,7 +28,7 @@ const Calculate: React.FC<TransactionProps> = ({
         </div>
         <div className="ml-22 mt-6">
           <p className="p-4 px-8 text-sm rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-full lg:w-[100%]">
-            XXXX
+            {totalUnit}
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Total Units Bought
