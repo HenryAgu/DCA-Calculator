@@ -30,6 +30,7 @@ const Home = () => {
 
   const [totalSpent, setTotalSpent] = useState("XXXXX");
   const [totalUnit, setTotalUnit] = useState("XXXXX");
+  const [averageCost, setAverageCost] = useState("XXXXX");
 
   const calculateTotal = () => {
     const spentValues = transactions.map((spent) => spent.totalSpent || 0);
@@ -50,6 +51,12 @@ const Home = () => {
     });
     // @ts-ignore
     setTotalUnit(totalUnit);
+
+    // Calculate average cost
+    // @ts-ignore
+    let averageCost = total / totalUnit
+    // @ts-ignore
+    setAverageCost(averageCost)
   };
 
   return (
@@ -93,6 +100,7 @@ const Home = () => {
       <Calculate
         totalSpent={totalSpent}
         totalUnit={totalUnit}
+        averageCost={averageCost}
         calculateTotal={calculateTotal}
       />
     </div>
