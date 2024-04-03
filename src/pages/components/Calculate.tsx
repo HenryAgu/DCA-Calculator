@@ -1,12 +1,14 @@
 interface TransactionProps {
   totalSpent: string;
   totalUnit: string;
+  averageCost: string;
   calculateTotal: () => void;
 }
 
 const Calculate: React.FC<TransactionProps> = ({
   totalSpent,
   totalUnit,
+  averageCost,
   calculateTotal,
 }) => {
   return (
@@ -20,7 +22,7 @@ const Calculate: React.FC<TransactionProps> = ({
       <div className="flex flex-col md:flex-row md:items-center gap-x-8 font-redHatDisplay text-grey-100 font-semibold lg:text-2xl">
         <div className="ml-22 mt-6">
           <p className="p-4 px-8 text-sm rounded-lg border border-purple-50 shadow-lg font-redHatDisplay w-[90vw] w-full lg:w-[100%]">
-            XXXX
+            {averageCost}
           </p>
           <span className="text-grey-100 text-sm font-bold">
             Average Cost/Unit
